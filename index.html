@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CocoStock - Welcome</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f0f2f5, #d9e6d9);
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(90deg, #28a745, #218838);
+            color: white;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .header h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 600;
+            letter-spacing: 2px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .header p {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        /* Main Content */
+        .main-content {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 150px; /* Space for fixed header */
+            max-width: 800px;
+            width: 90%;
+        }
+
+        .welcome-text {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .sign-in-btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: #28a745;
+            color: white;
+            text-decoration: none;
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            font-weight: 600;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+            animation: bounceIn 1s ease-out 0.5s;
+        }
+
+        .sign-in-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(40, 167, 69, 0.6);
+            background: #218838;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+            70% {
+                transform: scale(0.95);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header {
+                padding: 1.5rem;
+            }
+
+            .main-content {
+                margin-top: 120px;
+                padding: 1rem;
+            }
+
+            .welcome-text {
+                font-size: clamp(1.2rem, 3vw, 2rem);
+            }
+
+            .sign-in-btn {
+                padding: 0.8rem 2rem;
+                font-size: clamp(0.9rem, 1.5vw, 1rem);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: clamp(1.5rem, 4vw, 2rem);
+            }
+
+            .header p {
+                font-size: clamp(0.8rem, 1.5vw, 1rem);
+            }
+
+            .main-content {
+                margin-top: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>CocoStock</h1>
+        <p>Your Coconut Stock Management Solution</p>
+    </header>
+
+    <section class="main-content">
+        <h2 class="welcome-text">Welcome to CocoStock</h2>
+        <a href="login.php" class="sign-in-btn">Sign In</a>
+    </section>
+
+    <script>
+        // Add a subtle scroll effect to the button
+        window.addEventListener('scroll', () => {
+            const btn = document.querySelector('.sign-in-btn');
+            if (window.scrollY > 50) {
+                btn.style.transform = 'translateY(-5px)';
+                btn.style.boxShadow = '0 6px 20px rgba(40, 167, 69, 0.6)';
+            } else {
+                btn.style.transform = 'translateY(0)';
+                btn.style.boxShadow = '0 4px 15px rgba(40, 167, 69, 0.4)';
+            }
+        });
+
+        // Ensure elements fade in on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const header = document.querySelector('.header');
+            const welcomeText = document.querySelector('.welcome-text');
+            const signInBtn = document.querySelector('.sign-in-btn');
+
+            header.style.opacity = '0';
+            welcomeText.style.opacity = '0';
+            signInBtn.style.opacity = '0';
+
+            setTimeout(() => {
+                header.style.opacity = '1';
+                header.style.transition = 'opacity 0.5s ease';
+            }, 100);
+
+            setTimeout(() => {
+                welcomeText.style.opacity = '1';
+                welcomeText.style.transition = 'opacity 0.5s ease';
+            }, 300);
+
+            setTimeout(() => {
+                signInBtn.style.opacity = '1';
+                signInBtn.style.transition = 'opacity 0.5s ease';
+            }, 500);
+        });
+    </script>
+</body>
+</html>
